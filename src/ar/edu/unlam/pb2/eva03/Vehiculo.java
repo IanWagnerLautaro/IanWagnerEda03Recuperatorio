@@ -33,4 +33,12 @@ public class Vehiculo {
 		return true;
 	}
 
+	public Integer getCodigo() {
+		return Codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		Codigo = codigo;
+	}
+
 }

@@ -64,5 +64,8 @@ import ar.edu.unlam.pb2.eva03.interfaces.*;
 			this.tipo = tipo;
 		}
 	
+		public void agregarVehiculo(Vehiculo v) {
+			this.vehiculosEnLaBatalla.add(v);
+		}
 	
 }

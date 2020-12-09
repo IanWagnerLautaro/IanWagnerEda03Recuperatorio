@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Set;
 
 import ar.edu.unlam.pb2.eva03.enumeradores.TipoDeBatalla;
+import ar.edu.unlam.pb2.eva03.excepciones.VehiculoIncompatible;
+import ar.edu.unlam.pb2.eva03.excepciones.VehiculoInexistente;
+import ar.edu.unlam.pb2.eva03.interfaces.*;
 
 public class FuerzaArmada {
 
@@ -42,6 +45,58 @@ public class FuerzaArmada {
 		
 		return this.batallas.get(n);
 		
+	}
+
+	public boolean enviarALaBatalla(String n, Integer Codigo) throws VehiculoIncompatible, VehiculoInexistente {
+		
+		Vehiculo vehiculoaAgregar = buscarVehiculo(Codigo);
+		
+		if(this.convoy.contains(vehiculoaAgregar)==false) {
+			
+			throw new VehiculoInexistente("El Vehiculo no existe");
+		}
+		
+		TipoDeBatalla batalla =this.batallas.get(n).getTipo();
+		
+		
+		switch(batalla) {
+			
+		case TERRESTRE:
+			if(vehiculoaAgregar instanceof ITerrestre) {
+				this.batallas.get(n).agregarVehiculo(vehiculoaAgregar);
+				return true;
+			}else {
+				throw new VehiculoIncompatible("El vehiculo es incompatible");
+			}
+		case NAVAL:
+			if(vehiculoaAgregar instanceof IAcuatico) {
+				this.batallas.get(n).agregarVehiculo(vehiculoaAgregar);
+				return true;
+			}else {
+				throw new VehiculoIncompatible("El vehiculo es incompatible");
+			}	
+		case AEREA:
+			if(vehiculoaAgregar instanceof IVolador) {
+				this.batallas.get(n).agregarVehiculo(vehiculoaAgregar);
+				return true;
+			}else {
+				throw new VehiculoIncompatible("El vehiculo es incompatible");
+			}		
+		default:
+			return false;	
+		}
+		
+	}
+
+	private Vehiculo buscarVehiculo(Integer codigo) {
+		
+		for (Vehiculo vehiculo : convoy) {
+			if(vehiculo.getCodigo().equals(codigo)==true) {
+				return vehiculo;
+			}
+		}
+		
+		return null;
 	}
 
 }
