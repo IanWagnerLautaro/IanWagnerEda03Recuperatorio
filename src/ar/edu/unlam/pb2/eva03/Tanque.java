@@ -4,7 +4,6 @@ public class Tanque extends Terrestre {
 
 	public Tanque(Integer n, String d) {
 		super(n, d);
-		// TODO Auto-generated constructor stub
 	}
 
 }

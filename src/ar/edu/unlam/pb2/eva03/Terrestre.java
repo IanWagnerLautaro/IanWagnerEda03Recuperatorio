@@ -1,8 +1,10 @@
 package ar.edu.unlam.pb2.eva03;
 
+import ar.edu.unlam.pb2.eva03.interfaces.ITerrestre;
+
 public class Terrestre extends Vehiculo implements ITerrestre {
 	
-	private Double Velocidad;
+	protected Double Velocidad;
 
 
 	public Terrestre(Integer n, String d) {

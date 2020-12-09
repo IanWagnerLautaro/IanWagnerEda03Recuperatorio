@@ -1,8 +1,10 @@
 package ar.edu.unlam.pb2.eva03;
 
+import ar.edu.unlam.pb2.eva03.interfaces.IVolador;
+
 public class Volador extends Vehiculo implements IVolador {
 	
-	private Double Altura;
+	protected Double Altura;
 
 	public Volador(Integer n, String d) {
 		super(n, d);
